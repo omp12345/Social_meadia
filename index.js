@@ -1,10 +1,11 @@
 const express = require("express");
-const { connection } = require("../backend/db");
-const { UserRouter } = require("../backend/routes/user.routes");
-const { postRouter } = require("../backend/routes/post.routes");
-const { auth } = require("../backend/middlewares/auth");
+
 require("dotenv").config();
 const cors = require("cors");
+const { connection } = require("./db");
+const { UserRouter } = require("./routes/user.routes");
+const { auth } = require("./middlewares/auth");
+const { postRouter } = require("./routes/post.routes")
 
 const app = express();
 app.use(express.json());
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/users", UserRouter);
 app.use(auth);
-app.use("/post", postRouter);
+app.use("/post",postRouter);
 
 app.listen(process.env.port, async () => {
   try {

@@ -8,6 +8,9 @@ const { blacklist } = require("../blacklist");
 const UserRouter = Router();
 require("dotenv").config();
 
+
+
+
 UserRouter.post("/register", async (req, res) => {
 
   const { name, email, gender, password, age, city, is_married } = req.body;
